@@ -9,10 +9,17 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}\n")
     pygame.init()
 
+
+    #GROUPS
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+
+    Player.containers = (updateable, drawable)
+
+    #CREATE GAME OBJECTS
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
     player = Player((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2))
-
     clock = pygame.time.Clock()
     dt = 0
 
@@ -25,8 +32,10 @@ def main():
 
 
         #GO
-        player.update(dt)
-        player.draw(screen)
+        updateable.update(dt)
+        
+        for drawables in drawable:
+            drawables.draw(screen)
 
 
         #REFRESH
