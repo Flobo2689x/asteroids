@@ -1,4 +1,4 @@
-from circleshape import CircleShape
+from circleshape import *
 from constants import *
 import pygame
 
